@@ -1,23 +1,24 @@
 {
-  "name": "rest-api-playlist",
+  "name": "ninjaAPI",
   "version": "1.0.0",
-  "description": "Course files for the REST API tutorial series on The Net Ninja Youtube channel",
+  "description": "UBER for ninjas",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamshaunjp/rest-api-playlist.git"
+    "url": "git+https://github.com/mmarder96/ninjaAPI"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/iamshaunjp/rest-api-playlist/issues"
+    "url": "https://github.com/mmarder96/ninjaAPI/issues"
   },
-  "homepage": "https://github.com/iamshaunjp/rest-api-playlist#readme",
+  "homepage": "https://github.com/mmarder96/ninjaAPI#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
   "devDependencies": {

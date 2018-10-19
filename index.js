@@ -1,12 +1,15 @@
 const express = require('express');
-const routes = require('./routes/api')
+const bodyParser = require('body-parser');
 
-// Set up express app
+// Set up express app.
 const app = express();
 
-app.use('/api', routes);
+app.use(bodyParser.json());
 
-// Listen for requests
+// Initialize routes.
+app.use('/api', require('./routes/api'));
+
+// Listen for requests.
 app.listen(process.env.port||4000, function(){
     console.log("now listening for requests");
 });

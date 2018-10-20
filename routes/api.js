@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Movie = require('../models/movie');
 
-// Get a list of movies from the db.
+// Get a list of movies from the db where id = ${id}.
 router.get('/movies', function(req, res, next){
-  res.send({type: 'GET'});
+  Movie.find({_id: req.query._id}).then(function(movies){
+    res.send(movies);
+  });
 });
 
 // Add a new ninja to the db.

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Create imdb Schema and model.
-const ImdbSchema = new Schema({
+// Create movie Schema and model.
+const MovieSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Name field is required']
@@ -12,12 +12,12 @@ const ImdbSchema = new Schema({
     type: String
   },
   avaliable: {
-    type Boolean,
+    type: Boolean,
     default: false
   }
   // add in geo location
 });
 
-const Imdb = mongoose.model('imdb', ImdbSchema);
+const Movie = mongoose.model('movie', MovieSchema);
 
-module.exports = Imdb;
+module.exports = Movie;

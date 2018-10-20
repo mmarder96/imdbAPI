@@ -17,12 +17,18 @@ router.post('/movies', function(req, res, next){
 
 // Update a ninja in the db.
 router.put('/movies/:id', function(req, res, next){
-  res.send({type: 'PUT'});
+  Movie.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+    Movie.findOne({_id: req.params.id}).then(function(movie){
+        res.send(movie);
+    });
+  });
 });
 
 // Delete a ninja from the db.
 router.delete('/movies/:id', function(req, res, next){
-  res.send({type: 'DELETE'});
+  Movie.findByIdAndRemove({_id: req.params.id}).then(function(movie){
+    res.send(movie);
+  });
 });
 
 module.exports = router;

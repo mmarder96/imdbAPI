@@ -1,28 +1,28 @@
 const express = require('express');
 const router = express.Router();
 
-// Get a list of ninjas from the db.
-router.get('/ninjas', function(req, res){
+// Get a list of movies from the db.
+router.get('/movies', function(req, res){
   res.send({type: 'GET'});
 });
 
 // Add a new ninja to the db.
-router.post('/ninjas', function(req, res){
+router.post('/movies', function(req, res){
   console.log(req.body);
   res.send({
     type: 'POST',
     name: req.body.name,
-    rank: req.body.rank
+    rating: req.body.rating
   });
 });
 
 // Update a ninja in the db.
-router.put('/ninjas/:id', function(req, res){
+router.put('/movies/:id', function(req, res){
   res.send({type: 'PUT'});
 });
 
 // Delete a ninja from the db.
-router.delete('/ninjas/:id', function(req, res){
+router.delete('/movies/:id', function(req, res){
   res.send({type: 'DELETE'});
 });
 

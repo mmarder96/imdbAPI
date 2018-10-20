@@ -1,7 +1,7 @@
 {
-  "name": "ninjaAPI",
+  "name": "imdbAPI",
   "version": "1.0.0",
-  "description": "UBER for ninjas",
+  "description": "REST API for IMDB",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +19,8 @@
   "homepage": "https://github.com/mmarder96/ninjaAPI#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.3.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"

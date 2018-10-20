@@ -9,7 +9,9 @@ const app = express();
 mongoose.connect('mongodb://localhost/imdbapi', { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
-// MIDDLEWARE -------------------------------------
+// EXPRESS MIDDLEWARE -------------------------------------
+
+app.use(express.static('public'));
 
 // Set up body parser for json objects.
 app.use(bodyParser.json());

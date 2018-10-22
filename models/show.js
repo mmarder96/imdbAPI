@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Construct Schema for Movie.
-const MovieSchema = new Schema({
+// Construct Schema for Show.
+const ShowSchema = new Schema({
   tconst: {
     type: String,
     required: [true, 'const title id is required']
@@ -13,7 +13,7 @@ const MovieSchema = new Schema({
   },
   primaryTitle: {
     type: String,
-    required: [true, 'primary title is required']
+    required: [true, 'primary title name is required']
   },
   originalTitle: {
     type: String,
@@ -37,10 +37,10 @@ const MovieSchema = new Schema({
   },
   genres: {
     type: String,
-    default: "\N"
+    default: "\\N"
   }
 });
 
 // Export Schema and Model.
-const Movie = mongoose.model('movie', MovieSchema);
-module.exports = Movie;
+const Show = mongoose.model('show', ShowSchema);
+module.exports = Show;

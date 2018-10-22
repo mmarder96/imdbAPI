@@ -12,8 +12,61 @@
       <h1>Find Movies, TV shows, Celebrities and more...</h1>
       <div id="movies"></div>
     </div>
-      <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-      <script src="https://unpkg.com/react@15/dist/react.js"></script>
-      <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+
+    <!-- Create React Component -->
+    <script type = "text/babel">
+
+    // Get initial state of the Component.
+    var  Movies = React.createClass({
+      getInitialState: function(){
+        return({
+          movies: []
+        });
+      },
+      render:function(){
+        var movies = this.state.movies;
+        movies = movies.map(function(movie, index){
+          return(
+            <li key = {index}>
+              <span className={movie.avaliable}></span>
+              <span className="name">{movie.name}</span>
+              <span className="rating">{movie.rating}</span>
+            </li>
+          )
+        });
+        return(
+          <div id="movie-container">
+            <form id="search" onSubmit={this.handleSubmit}>
+              <label>Enter a Movie, TV Show, or Celebrity...</label>
+              <input type="text" ref="_id" placeholder="id" required/>
+              <input type="submit" value="Find Movies"/>
+            </form>
+            <ul>{movies}</ul>
+          </div>
+        )
+      },
+      handleSubmit: function(e){
+        e.preventDefault();
+        var _id = this.refs._id.value;
+
+        fetch("/api/movies?_id="+_id).then(function(data){
+          return data.json();
+        }).then(json => {
+          this.setState({
+            movies: json
+          });
+        });
+      }
+    });
+
+    // Render updated state to the DOM.
+    ReactDOM.render(<Movies/>, document.getElementById('movies'));
+
+    </script>
+
   </body>
 </html>

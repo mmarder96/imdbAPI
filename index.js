@@ -28,6 +28,7 @@ app.use(function(err, req, res, next){
 //--------------------------------------------------------
 
 // Listen for requests.
-app.listen(process.env.port||4000, function(){
-    console.log("now listening for requests");
+var server = app.listen(process.env.port || 4000, function(){
+    var port = server.address().port;
+    console.log("now listening for requests on port", port);
 });

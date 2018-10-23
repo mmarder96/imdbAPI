@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Connect to mongodb
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect('mongodb://mmarder96:Redram11!@ds141043.mlab.com:41043/mediadb', { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 // EXPRESS MIDDLEWARE -------------------------------------

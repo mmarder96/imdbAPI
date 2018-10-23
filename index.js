@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Connect to mongodb
-mongoose.connect('mongodb://localhost/imdbapi', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 // EXPRESS MIDDLEWARE -------------------------------------

@@ -13,7 +13,7 @@ router.get('/celebrities/:nconst', function(req, res, next){
 });
 
 router.get('/celebrities', function(req, res, next){
-  Movie.find({}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
+  Movie.find({primaryName: req.query.name}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
     res.send(movies);
   }).catch(next);
 });
@@ -48,7 +48,7 @@ router.get('/movies/:tconst', function(req, res, next){
 });
 
 router.get('/movies', function(req, res, next){
-  Movie.find({'primaryTitle' : req.query.title}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
+  Movie.find({primaryTitle : req.query.title}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
     res.send(movies);
   }).catch(next);
 });
@@ -77,11 +77,10 @@ router.delete('/movies/:tconst', function(req, res, next){
 // SEARCH ROUTE ---------------------------------------------------------
 
 router.get('/search', function(req, res, next){
-  // Movie.find({primaryTitle: req.query.query}).then(function(movies){
-  //   res.send(movies).next();
-  // });
-  Celebrity.find({primaryName: req.query.query}).sort({'primaryName' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
-    res.send(movies).next();
+  // Search all collections and send any matching results as a response of [movies, celebrities];
+  Promise.all([Movie.find({primaryTitle: req.query.query}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)),
+  Celebrity.find({primaryName: req.query.query}).sort({'primaryName' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit))]).then(function(results){
+    res.send(results);
   });
 });
 

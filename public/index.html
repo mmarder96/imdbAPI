@@ -35,13 +35,14 @@
               <span className={movie.isAdult}></span>
               <span className="name">{movie.primaryTitle}</span>
               <span className="rating">{movie.startYear}</span>
+              <span classname="genre">{movie.genre}</span>
             </li>
           )
         });
         return(
           <div id="movie-container">
             <form id="search" onSubmit={this.handleSubmit}>
-              <input type="text" ref="title" placeholder="Enter a Movie, TV Show, or Celebrity..." required/>
+              <input type="text" ref="title" placeholder="Enter a Movie, TV Show, or Short..." required/>
               <input type="submit" value="Search"/>
             </form>
             <ul>{movies}</ul>
@@ -51,7 +52,7 @@
       handleSubmit: function(e){
         e.preventDefault();
         var title = this.refs.title.value;
-        fetch("/api/movies?title="+title).then(function(data){
+        fetch("/api/media?title="+title).then(function(data){
           return data.json();
         }).then(json => {
           this.setState({

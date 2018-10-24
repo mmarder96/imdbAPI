@@ -16,7 +16,7 @@ You can search for various media titles via the REACT driven front-end or use th
 
 ### /api/movies
 * type /api/movies/${tconst} to retrieve a JSON object of the movie title with the matching tconst id
-* retrieve the tconst id for your desired movien title via a /api/search query
+* retrieve the tconst id for your desired movie title via a /api/search query
 
 ### /api/shows
 * type /api/shows/${tconst} to retrieve a JSON object of the show title with the matching tconst id

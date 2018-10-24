@@ -1,5 +1,5 @@
 # IMDB API
-deployement link: https://openimdb.herokuapp.com/ \n
+deployement link: https://openimdb.herokuapp.com/  
 An IMDB RESTful API developed using the Atom text editorm, written using Node.js, and implementing a MongoDB database hosted on mLab. I am using express to to create and postman to test the various CRUD methods for the api's given routes and have obtained my dataset from https://datasets.imdbws.com/.
 
 # How to Use

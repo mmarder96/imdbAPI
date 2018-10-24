@@ -10,8 +10,8 @@ You can search for various media titles via the REACT driven front-end or use th
 ### /api/search
 * type /api/search?query=${title} to retireve a JSON object matching the desired title
 * add &offset=${offset}&limit=${limit} to your query to limit results
-** ${offset} is the number of results from the general query you wish to omit
-** ${limit} is the total number of results you wish to see
+  * ${offset} is the number of results from the general query you wish to omit
+  * ${limit} is the total number of results you wish to see
 
 ### /api/movies
 * type /api/movies/${tconst} to retrieve a JSON object of the movie title with the matching tconst id

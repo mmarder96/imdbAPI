@@ -4,7 +4,7 @@ Deployment link: https://openimdb.herokuapp.com/
 An IMDB RESTful API developed using the Atom text editorm, written using Node.js, and implementing a MongoDB database hosted on mLab. I am using express to create and postman to test the various CRUD methods for the api's given routes and have obtained my dataset from https://datasets.imdbws.com/.
 
 # How to Use
-You can search for various media titles via the REACT driven front-end or use the various api routes to get/post/put/delete JSON objects for the different kinds of media stored on the MongoDB.
+You can search for various media titles via the REACT driven front-end or use the various api routes to get/post/put/delete JSON objects for the different kinds of media stored on the MongoDB. NOTE: titles are currenlty case-sensitive (this will be fixed in the enxt update).
 
 ## Routes
 

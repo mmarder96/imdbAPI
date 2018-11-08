@@ -11,7 +11,7 @@ router.get('/media/:tconst', function(req, res, next){
 });
 
 router.get('/media', function(req, res, next){
-  Media.find({primaryTitle : req.query.title}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(media){
+  Media.find({primaryTitle : new RegExp(req.query.title, 'i')}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.page)*50).limit(50).then(function(media){
     res.send(media);
   }).catch(next);
 });
@@ -46,7 +46,7 @@ router.get('/movies/:tconst', function(req, res, next){
 });
 
 router.get('/movies', function(req, res, next){
-  Media.find({primaryTitle : req.query.title, titleType: 'movie'}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(movies){
+  Media.find({primaryTitle : new RegExp(req.query.title, 'i'), titleType: 'movie'}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.page)*50).limit(50).then(function(movies){
     res.send(movies);
   }).catch(next);
 });
@@ -75,7 +75,7 @@ router.delete('/movies/:tconst', function(req, res, next){
 // SEARCH ROUTE ---------------------------------------------------------
 
 router.get('/search', function(req, res, next){
-  Media.find({primaryTitle: req.query.query}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(media){
+  Media.find({primaryTitle: new RegExp(req.query.query, 'i')}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.page)*50).limit(50).then(function(media){
     res.send(media);
   }).catch(next);
 });
@@ -89,7 +89,7 @@ router.get('/shows/:tconst', function(req, res, next){
 });
 
 router.get('/shows', function(req, res, next){
-  Media.find({primaryTitle : req.query.title, titleType: 'tvSeries'}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.offset)).limit(parseInt(req.query.limit)).then(function(shows){
+  Media.find({primaryTitle : new RegExp(req.query.title, 'i'), titleType: 'tvSeries'}).sort({'primaryTitle' : 1}).skip(parseInt(req.query.page)*50).limit(50).then(function(shows){
     res.send(shows);
   }).catch(next);
 });
@@ -110,7 +110,7 @@ router.put('/shows/:tconst', function(req, res, next){
 });
 
 router.delete('/shows/:tconst', function(req, res, next){
-  Media.findByIdAndRemove({tconst: req.params.tconst}).then(function(shows){
+  Media.findByIdAndRemove({tconst: req.params.tconst}).then(function(movie){
     res.send(shows);
   });
 });
